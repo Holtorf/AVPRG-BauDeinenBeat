@@ -37,7 +37,7 @@ button.active{
 }
 
 #frequencyContainer {
-    background: #d69595;
+    background: tomato;
     width: 1144;
 	position: fixed;
 	top: 209;
@@ -45,7 +45,7 @@ button.active{
 }
 
 #detuneContainer {
-    background: #dd8585;
+    background: tomato;
     width: 1144;
 	position: fixed;
 	top: 270;
@@ -53,7 +53,7 @@ button.active{
 }
 
 #qContainer {
-    background: #db6d6d;
+    background: tomato;
     width: 1144;
 	position: fixed;
 	top: 331;
@@ -61,7 +61,7 @@ button.active{
 }
 
 #gainContainer {
-    background: #db5a5a;
+    background: tomato;
     width: 1144;
 	position: fixed;
 	top: 392;
@@ -69,7 +69,7 @@ button.active{
 }
 
 #typeContainer {
-    background: #db4a4a;
+    background: tomato;
     width: 1144;
 	position: fixed;
 	top: 453;
