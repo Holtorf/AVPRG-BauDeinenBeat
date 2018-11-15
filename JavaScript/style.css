@@ -1,0 +1,103 @@
+html, body {
+    padding: 0; margin: 0;
+    text-align: center;
+    background: #909090;
+    color: #e0d336;
+}
+
+button {
+    background-color: tomato;
+    border: outset;
+	height: 50;
+	width: 140;
+    color: #ffffff;
+    font-size: 2.8em;
+    padding: 1px 2px;
+}
+
+#ButtonFilter{
+    font-size: 9px;
+	position: fixed;
+	left: 140;
+	width: 1144;
+	border: 3px;
+}
+
+#ButtonLeft{
+    font-size: 9px;
+	position: fixed;
+	top:55;
+	width: 140;
+	border: 3px;
+}
+
+button.active{
+	background-color: green;
+	color: #dcf442;
+}
+
+#frequencyContainer {
+    background: #d69595;
+    width: 1144;
+	position: fixed;
+	top: 209;
+	left: 140;
+}
+
+#detuneContainer {
+    background: #dd8585;
+    width: 1144;
+	position: fixed;
+	top: 270;
+	left: 140;
+}
+
+#qContainer {
+    background: #db6d6d;
+    width: 1144;
+	position: fixed;
+	top: 331;
+	left: 140;
+}
+
+#gainContainer {
+    background: #db5a5a;
+    width: 1144;
+	position: fixed;
+	top: 392;
+	left: 140;
+}
+
+#typeContainer {
+    background: #db4a4a;
+    width: 1144;
+	position: fixed;
+	top: 453;
+	left: 140;
+}
+
+.slider {
+    margin: 0;
+    -webkit-appearance: none;
+    appearance: none;
+	width: 100%;
+    height: 25px;
+    background: #d3a588;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #303bc3;
+    cursor: pointer;
+}
