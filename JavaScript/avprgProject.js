@@ -16,7 +16,14 @@ var context = new AudioContext(),
 
     isPlaying = false,
    
-	sound = new Audio("../sounds/sound.wav"),
+	sound = new Audio("../Sounds/sound.wav"),
+	banjo = new Audio("../Sounds/banjo.wav"),
+	drum = new Audio("../Sounds/drum.wav"),
+	hPiano = new Audio("../Sounds/housePiano.mp3"),
+	rPiano = new Audio("../Sounds/randomPiano.wav"),
+	rDrum = new Audio("../Sounds/retroDrum.wav"),
+	sphone = new Audio("../Sounds/saxophone.wav"),
+	sGuitar = new Audio("../Sounds/smoothGuitar.wav"),
 	source = context.createMediaElementSource(sound),
 	filter = context.createBiquadFilter();
 
@@ -24,6 +31,7 @@ var context = new AudioContext(),
     sliders[i].addEventListener("mousemove", changeParameter);
 }
 
+//Funktion zur änderung der Parameter Werte der Slider
 function changeParameter() {
     switch(this.id) {
         case "frequencySlider":
@@ -45,18 +53,16 @@ function changeParameter() {
     }
 }
 
+//Actionlistener für die Button
 startBtn.addEventListener("click",function(){
 	sound.play();
 });
-
 stopBtn.addEventListener("click",function(){
 	sound.pause();
 });
-
 saveBtn.addEventListener("click",function(){
 
 });
-
 lpButton.addEventListener("click",function(){
  filter.type = filter.LOWPASS;
  filter.frequency.value = 5000;
