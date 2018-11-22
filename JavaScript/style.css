@@ -6,13 +6,22 @@ html, body {
 }
 
 button {
-    background-color: tomato;
+    background-color: #FF4500;
     border: outset;
 	height: 50;
 	width: 140;
     color: #ffffff;
     font-size: 2.8em;
     padding: 1px 2px;
+	opacity: 0.9;
+}
+
+.button:hover{
+	opacity: 1;
+}
+
+.button:active{
+	background-color: #EE4500; 
 }
 
 #ButtonFilter{
@@ -31,13 +40,8 @@ button {
 	border: 3px;
 }
 
-button.active{
-	background-color: green;
-	color: #dcf442;
-}
-
 #frequencyContainer {
-    background: tomato;
+    background: #FF4500;
     width: 1144;
 	position: fixed;
 	top: 209;
@@ -45,7 +49,7 @@ button.active{
 }
 
 #detuneContainer {
-    background: tomato;
+    background: #FF4500;
     width: 1144;
 	position: fixed;
 	top: 270;
@@ -53,7 +57,7 @@ button.active{
 }
 
 #qContainer {
-    background: tomato;
+    background: #FF4500;
     width: 1144;
 	position: fixed;
 	top: 331;
@@ -61,7 +65,7 @@ button.active{
 }
 
 #gainContainer {
-    background: tomato;
+    background: #FF4500;
     width: 1144;
 	position: fixed;
 	top: 392;
@@ -69,7 +73,7 @@ button.active{
 }
 
 #typeContainer {
-    background: tomato;
+    background: #FF4500;
     width: 1144;
 	position: fixed;
 	top: 453;
