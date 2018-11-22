@@ -21,6 +21,7 @@ class StartCamera{
     private:int rasterCols;
     private:int fieldRows;
     private:int fieldCols;
+    private:bool b;
 
 
 

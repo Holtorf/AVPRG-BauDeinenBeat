@@ -29,7 +29,10 @@ int StartCamera::start(){
         qDebug()<<"change the camera port number";
         return -1;
     }
-    while(true){
+    bool b = true;
+    int testCounter=0;
+
+    while(b){
 
         cap.read(bgrFrame);
         imshow("camera", bgrFrame);
@@ -47,7 +50,7 @@ int StartCamera::start(){
         fieldRows = 32;
         rasterFieldArray[fieldCols][fieldRows];
 
-        int testCounter=0;
+
 
 // Rasterfelder werden erstellt
         for(int rasterY=0; rasterY<rasterRows; rasterY++){
@@ -71,7 +74,7 @@ int StartCamera::start(){
                        int hue = hsvPixel[0];
 // der H-Wert wird auf seinen Farbbereich gecheckt und der Farbbereich wird als Zahl im Array gespeichert
 
-                       if(hue<=5 || hue>=355){                  //Pixel rot
+                       if(hue<=15 || hue>=355){                  //Pixel rot
                            //rasterFieldArray[fieldX][fieldY]= 1;
                            redCounter += 1;
                        }
@@ -79,7 +82,7 @@ int StartCamera::start(){
                            //rasterFieldArray[fieldX][fieldY]= 2;
                            yellowCounter += 1;
                        }
-                       else if (hue<=75 && hue>=60){          //Pixel gruen
+                       else if (hue<=90 && hue>=60){          //Pixel gruen
                            //rasterFieldArray[fieldX][fieldY]= 3;
                            greenCounter += 1;
                        }
@@ -102,31 +105,35 @@ int StartCamera::start(){
 
                if(yellowCounter<=redCounter && greenCounter<=redCounter && blueCounter<=redCounter && othersCounter<=redCounter){                   //Rasterfeld rot
                    colorArray[rasterX][rasterY]= 1;
-                   qDebug()<<"Rot";
+                   qDebug()<<rasterX<<" "<<rasterY<<" Rot";
                }
                else if (redCounter<=yellowCounter && greenCounter<=yellowCounter && blueCounter<=yellowCounter && othersCounter<=yellowCounter) {   //Rasterfeld gelb
                    colorArray[rasterX][rasterY]= 2;
-                   qDebug()<<"Gelb";
+                   qDebug()<<rasterX<<" "<<rasterY<<"Gelb";
                }
                else if (yellowCounter<=greenCounter && redCounter<=greenCounter && blueCounter<=greenCounter && othersCounter<=greenCounter){       //Rasterfeld gruen
                    colorArray[rasterX][rasterY]= 3;
-                   qDebug()<<"Gruen";
+                   qDebug()<<rasterX<<" "<<rasterY<<"Gruen";
                }
                else if (yellowCounter<=blueCounter && greenCounter<=blueCounter && redCounter<=blueCounter && othersCounter<=blueCounter){          //Rasterfeld blau
                    colorArray[rasterX][rasterY]= 4;
-                   qDebug()<<"Blau";
+                   qDebug()<<rasterX<<" "<<rasterY<<"Blau";
                }
                else{                                                                                                                                //Rasterfeld sonstige
                    colorArray[rasterX][rasterY]= 0;
-                   qDebug()<<"Sonstiges";
+                   qDebug()<<rasterX<<" "<<rasterY<<"Sonstiges";
                }
+
+
 
             }
             testCounter +=1;
+            if(testCounter==13){
 
-            if(testCounter==14){
-                break;
+                b=false;
+
             }
+
         }
 
     }
