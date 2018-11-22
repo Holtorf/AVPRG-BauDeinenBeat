@@ -1,0 +1,56 @@
+<html>
+
+	<head>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src= "midi.js"></script>
+        <title>Bau deinen Beat</title>
+	</head>
+
+	<body>
+		<div id="mainContainer">
+
+			<div id="buttonFilter">
+				<!--Buttons zur anwendung der 7 Filter & Notch-->
+				<button id="lpButton" class="button">Lowpass</button>
+				<button id="hpButton" class="button">Highpass</button>
+				<button id="bpButton" class="button">Bandpass</button>
+				<button id="apButton" class="button">Allpass</button>
+				<button id="lsButton" class="button">Lowshelf</button>
+				<button id="hsButton" class="button">Higshelf</button>
+				<button id="pButton" class="button">Peaking</button>
+				<button id="nButton" class="button">Notch</button>
+			</div>
+
+			<div id="buttonLeft">
+				<!--Buttons für die Start, Stop und Speicher fkt.-->
+				<button id="startBtn" class="button">Start</button>
+				<button id="stopBtn" class="button">Stop</button>
+				<button id="saveBtn" class="button">Save</button>
+			</div>
+		
+
+			<!--Container für die verschiedenen Slider-->
+			<div id="frequencyContainer">Frequency
+					<input type="range" min="20" max="20000" value="1000" class="slider" id="frequencySlider">
+					<span id="frequencyOutput" class="output">1000 Hz</span>
+			</div>
+        
+			<div id="detuneContainer">Detune
+				<input type="range" min="0" max="100" value="0" class="slider" id="detuneSlider">
+				<span id="detuneOutput" class="output">0 cents</span>
+			</div>
+        
+			<div id="qContainer">Quality
+				<input type="range" min="0" max="100" value="0" class="slider" id="qSlider">
+				<span id="qOutput" class="output">0</span>
+			</div>
+        
+			<div id="gainContainer">Gain
+				<input type="range" min="-40" max="40" value="0" class="slider" id="gainSlider">
+				<span id="gainOutput" class="output">0 dB</span>
+			</div>
+			<script src="avprgProject.js"></script>
+		</div>
+	</body>
+
+</html>
