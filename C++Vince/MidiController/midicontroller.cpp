@@ -1,7 +1,7 @@
 #include <midicontroller.h>
-#include <opencv2/opnecv.hpp>
 #include <vector>
 #include <QtDebug>
+#include <opencv2/opencv.hpp>
 
 using namespace cv;
 using namespace std;
@@ -42,7 +42,7 @@ int MidiController::startCamera(){
          *   results[2] = y-coordinates
          *   results[3] = color value
          */
-        vector<int> results = getDominantColor (redResult, blueResult, greebResult, 3);
+        vector<int> results = getDominantColor (redResult, blueResult, greenResult, yellowResult, 4);
 
         qDebug() <<"size: "<< results[0] <<" x: " << results[1] << "y: " << results[2] << "color: " << results[3];
 
@@ -54,7 +54,7 @@ int MidiController::startCamera(){
             case 100: colorCode = 1;    //red = 1 ; case = filltext
             break;
 
-            case 80: colorCode = 2;     // bluew = 2;
+            case 80: colorCode = 2;     // blue = 2;
             break;
 
             case 60: colorCode = 3;     // green = 3;

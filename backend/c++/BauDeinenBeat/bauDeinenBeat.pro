@@ -27,18 +27,19 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    startcamera.cpp \
-    gridframe.cpp
+        startcamera.cpp \
+        gridframe.cpp
 
 HEADERS += \
         mainwindow.h \
-    startcamera.h \
-    gridframe.h
+        startcamera.h \
+        gridframe.h\
 
 FORMS += \
         mainwindow.ui
 
 INCLUDEPATH += C:\opencv\OpenCV-MinGW-Build-OpenCV-3.4.1\include
+
 
 LIBS += C:/opencv/OpenCV-MinGW-Build-OpenCV-3.4.1/bin/opencv_ffmpeg341.dll
 LIBS += C:/opencv/OpenCV-MinGW-Build-OpenCV-3.4.1/bin/libopencv_calib3d341.dll
@@ -59,8 +60,11 @@ LIBS += C:/opencv/OpenCV-MinGW-Build-OpenCV-3.4.1/bin/libopencv_video341.dll
 LIBS += C:/opencv/OpenCV-MinGW-Build-OpenCV-3.4.1/bin/libopencv_videoio341.dll
 LIBS += C:/opencv/OpenCV-MinGW-Build-OpenCV-3.4.1/bin/libopencv_videostab341.dll
 
+# Drumstick hinzufügen für MIDI
+include(../drumstick/drumstick.pro)
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+

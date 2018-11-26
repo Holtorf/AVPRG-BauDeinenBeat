@@ -1,0 +1,12 @@
+INPUT(
+./release\main.o
+./release\mainwindow.o
+./release\startcamera.o
+./release\gridframe.o
+./release\midicontroller.o
+./release\winmidiinput.o
+./release\winmidioutput.o
+./release\moc_mainwindow.o
+./release\moc_midiinput.o
+./release\moc_midioutput.o
+);

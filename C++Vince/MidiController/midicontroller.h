@@ -1,7 +1,7 @@
 #ifndef MIDICONTROLLER_H
 #define MIDICONTROLLER_H
 
-#include "midicontroller_global.h"
+
 #include <opencv2/opencv.hpp>
 #include <../drumstick/midioutput.h>
 #include <../drumstick/midiinput.h>
@@ -33,7 +33,7 @@ private:
 
     std::vector<int> redResult, bllueResult, greenResult;
 
-    drumstick::rt:MIDIOutput midiOutput;
+    drumstick::rt::MIDIOutput midioutput;
     int midichannel;
 
 };

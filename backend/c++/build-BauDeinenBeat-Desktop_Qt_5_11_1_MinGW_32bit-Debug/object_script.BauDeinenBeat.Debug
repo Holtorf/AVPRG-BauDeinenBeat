@@ -1,0 +1,12 @@
+INPUT(
+./debug\main.o
+./debug\mainwindow.o
+./debug\startcamera.o
+./debug\gridframe.o
+./debug\midicontroller.o
+./debug\winmidiinput.o
+./debug\winmidioutput.o
+./debug\moc_mainwindow.o
+./debug\moc_midiinput.o
+./debug\moc_midioutput.o
+);

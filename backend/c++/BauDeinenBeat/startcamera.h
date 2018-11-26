@@ -1,13 +1,19 @@
-#include <opencv\cv.h>
-#include <QDebug>
-#include <vector>
-using namespace std;
-using namespace cv;
 #ifndef STARTCAMERA_H
 #define STARTCAMERA_H
 
+
+#include <opencv\cv.h>
+#include <QDebug>
+#include <vector>
 #include <QObject>
 #include <QWidget>
+
+#include <opencv2/opencv.hpp>
+#include <../drumstick/midioutput.h>
+#include <../drumstick/midiinput.h>
+
+using namespace std;
+using namespace cv;
 
 class StartCamera{
 
@@ -23,12 +29,16 @@ class StartCamera{
     private:int fieldCols;
     private:bool b;
 
-
+    drumstick::rt::MIDIOutput midiOutput;
+    int midichannel;
 
 public:
+
     StartCamera();
+    ~StartCamera();
     int start();
  //   static Mat getHsvFrame();
+
 };
 
 #endif // STARTCAMERA_H
