@@ -15,7 +15,7 @@ var context = new AudioContext(),
     stopBtn = document.getElementById("stopBtn"),
 
     isPlaying = false,
- 
+	filter = context.createBiquadFilter();
 
    for (var i = 0; i < sliders.length; i++) {
     sliders[i].addEventListener("mousemove", changeParameter);
