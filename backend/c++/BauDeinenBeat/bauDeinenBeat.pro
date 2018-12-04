@@ -27,13 +27,11 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-        startcamera.cpp \
-        gridframe.cpp
+        startcamera.cpp
 
 HEADERS += \
         mainwindow.h \
         startcamera.h \
-        gridframe.h\
 
 FORMS += \
         mainwindow.ui

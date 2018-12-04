@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include "startcamera.h"
-#include "gridframe.h"
 
 int main(int argc, char *argv[])
 {

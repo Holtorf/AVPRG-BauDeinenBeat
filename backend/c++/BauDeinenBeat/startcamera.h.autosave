@@ -15,7 +15,6 @@ using namespace cv;
 class StartCamera{
 
     private:int colorArray[16][15];
-    private:int rasterFieldArray[40][32];
     private:int rasterX;
     private:int rasterY;
     private:int fieldX;
