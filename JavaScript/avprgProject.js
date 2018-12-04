@@ -15,15 +15,7 @@ var context = new AudioContext(),
     stopBtn = document.getElementById("stopBtn"),
 
     isPlaying = false,
-   
-	banjo = new Audio("../Sounds/banjo.wav"),
-	drum = new Audio("../Sounds/drum.wav"),
-	hPiano = new Audio("../Sounds/housePiano.wav"),
-	rPiano = new Audio("../Sounds/randomPiano.wav"),
-	rDrum = new Audio("../Sounds/retroDrum.wav"),
-	sphone = new Audio("../Sounds/saxophone.wav"),
-	source = context.createMediaElementSource(sound),
-	filter = context.createBiquadFilter();
+ 
 
    for (var i = 0; i < sliders.length; i++) {
     sliders[i].addEventListener("mousemove", changeParameter);
