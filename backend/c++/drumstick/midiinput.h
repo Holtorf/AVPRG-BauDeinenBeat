@@ -16,7 +16,6 @@
     with this program; if not, write to the Free Software Foundation, Inc.,
     51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-
 #ifndef MIDIINPUT_H
 #define MIDIINPUT_H
 
@@ -92,7 +91,6 @@ namespace rt {
          * @param program
          */
         void midiProgram(const int chan, const int program);
-
         /**
          * @brief midiChannelPressure 0xD
          * @param chan

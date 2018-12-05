@@ -14,8 +14,10 @@ using namespace cv;
 
 class StartCamera{
 
+    private:double startTime;
+    private:Mat bgrFrame;
+    private:Mat hsvFrame;
     private:int colorArray[16][15];
-    private:int rasterFieldArray[40][32];
     private:int rasterX;
     private:int rasterY;
     private:int fieldX;
@@ -28,6 +30,7 @@ class StartCamera{
     private:QByteArray data;
     private:int sat;
     private:int val;
+
 
     drumstick::rt::MIDIOutput midiOutput;
     int midichannel;

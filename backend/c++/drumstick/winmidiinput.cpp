@@ -17,7 +17,6 @@
     51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 // AP 9.10.2015 added midiInStart()
-
 #include <QString>
 #include <QMap>
 #include <QDebug>
@@ -322,3 +321,4 @@ namespace rt {
     }
 
 }} // namespace drumstick::rt
+
