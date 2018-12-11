@@ -15,9 +15,13 @@ var context = new AudioContext(),
     stopBtn = document.getElementById("stopBtn"),
 
     isPlaying = false,
+	source = context.createMediaElementSource(sounds);
 	filter = context.createBiquadFilter();
 
-   for (var i = 0; i < sliders.length; i++) {
+source.connect(filter);
+filter.connect(context.destination);
+
+for (var i = 0; i < sliders.length; i++) {
     sliders[i].addEventListener("mousemove", changeParameter);
 }
 
@@ -44,16 +48,18 @@ function changeParameter() {
 }
 
 //Actionlistener für die Button
-startBtn.addEventListener("click",function(){
-	sound.play();
+startBtn.addEventListener("mousedown", function(e){
+	playMusic = 1;
 });
-stopBtn.addEventListener("click",function(){
-	sound.pause();
+
+stopBtn.addEventListener("mousedown",function(e){
+	playMusic = 0;
 });
-saveBtn.addEventListener("click",function(){
+
+saveBtn.addEventListener("mousedown",function(){
 
 });
-lpButton.addEventListener("click",function(){
+lpButton.addEventListener("mousedown",function(){
  filter.type = filter.LOWPASS;
  filter.frequency.value = 5000;
 });
