@@ -1,31 +1,95 @@
-	var context = new AudioContext(),
+var context = new AudioContext(),
 	rSound = new Audio("../Sounds/banjo.wav"),
 	gSound = new Audio("../Sounds/drum.wav"),
 	bSound = new Audio("../Sounds/housePiano.wav"),
-	ySound = new Audio("../Sounds/saxophone.wav");
-	var playMusic = 0;
+	ySound = new Audio("../Sounds/saxophone.wav"),
+	sounds = [rSound,ySound,gSound,bSound];
 
-	var cArray = new Array(5);
-	var sounds = [rSound,ySound,gSound,bSound];
+var playMusic = 0;
+var timer = null;
 
-	//Erstelllung des 2-Dimensionalem Coordinaten Arrays
-	var coord = new Array(8);
+window.onload=function(){
+	var   sliders = document.getElementsByClassName("slider"),
+    
+	lpBtn = document.getElementById("lpButton"),
+    hpBtn = document.getElementById("hpButton"),
+    bpBtn = document.getElementById("bpButton"),
+    apBtn = document.getElementById("apButton"),
+    lsBtn = document.getElementById("lsButton"),
+    hsBtn = document.getElementById("hsButton"),
+    pBtn = document.getElementById("pButton"),
+    nBtn = document.getElementById("nButton"),
 
-	for(var x = 0; x < coord.length; x++){
-		coord[x] = new Array(7);
+    stButton = document.getElementById("startBtn"),
+	svButton = document.getElementById("saveBtn"),
+    spButton = document.getElementById("stopBtn"),
+
+	source = context.createMediaElementSource(rSound);
+	filter = context.createBiquadFilter();
+
+	source.connect(filter);
+	filter.connect(context.destination);
+
+	for (var i = 0; i < sliders.length; i++) {
+		sliders[i].addEventListener("mousemove", changeParameter);
 	}
+
+	//Funktion zur änderung der Parameter Werte der Slider
+	function changeParameter() {
+		switch(this.id) {
+			case "frequencySlider":
+				filter.frequency.value = this.value;
+				document.getElementById("frequencyOutput").innerHTML = this.value + " Hz";
+				break;
+			case "detuneSlider":
+				filter.detune.value = this.value;
+				document.getElementById("detuneOutput").innerHTML = this.value + " Cents";
+				break;
+			case "qSlider":
+				filter.Q.value = this.value;
+				document.getElementById("qOutput").innerHTML = this.value;
+				break;
+			case "gainSlider":
+				filter.gain.value = this.value;
+				document.getElementById("gainOutput").innerHTML = this.value + " dB";
+				break;
+		}
+	}
+
+	//Actionlistener für die Button
+	stButton.addEventListener("mousedown", function(e){
+		console.log("start");
+		timer = setInterval(() => {
+			tCounter += 1;
+			console.log(tCounter);
+				if (tCounter === 8){
+					tCounter = 0;
+					console.log(tCounter);
+					}
+		}, 1000);
+	});
+
+	spButton.addEventListener("mousedown",function(e){
+		clearInterval(timer);
+	});
+
+	lpBtn.addEventListener("mousedown",function(e){
+		filter.type = filter.LOWPASS;
+		filter.frequency.value = 5000;
+	});
+
+}
+
+var cArray = new Array(5);
+
+//Erstelllung des 2-Dimensionalem Coordinaten Arrays
+var coord = new Array(8);
+for(var x = 0; x < coord.length; x++){
+	coord[x] = new Array(7);
+}
 	
-	//Timer mit Counter für den abgleich mit der X-Koordinate
-	var tCounter = 0;
-	
-	
-	const timer = setInterval(() => {
-		tCounter += 1;
-			if (tCounter === 8){
-				tCounter = 0;
-			}
-	}, 1000);
-	
+//Timer mit Counter für den abgleich mit der X-Koordinate
+var tCounter = 0;
 
 if (navigator.requestMIDIAccess) {
 	console.log("This browser supports MIDI");
@@ -69,9 +133,6 @@ if (navigator.requestMIDIAccess) {
 		var x = 0;
 		var i = 0;
 
-		
-		console.log(tCounter);
-		
 		for(c = 0; c < cArray.length; c++){
 			cArray[c] = 6;
 		}
@@ -86,16 +147,14 @@ if (navigator.requestMIDIAccess) {
 			if (cArray[i] != 6){
 				playInstrument(i, cArray[i]);
 			}
-		}		
-	}
+		}
+		}
 
 	//Zuweisung Farbe und Instrument
-	function playInstrument(i){
+function playInstrument(i){
 
 		sounds[i].play(); 
-
-	}
-
+}
 }else {
 	console.log("WebMidi is not supported.");
 }
