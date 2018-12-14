@@ -5,7 +5,6 @@ var context = new AudioContext(),
 	ySound = new Audio("../Sounds/saxophone.wav"),
 	sounds = [rSound,ySound,gSound,bSound];
 
-var playMusic = 0;
 var timer = null;
 
 window.onload=function(){
@@ -30,8 +29,8 @@ window.onload=function(){
 	source.connect(filter);
 	filter.connect(context.destination);
 
-	for (var i = 0; i < sliders.length; i++) {
-		sliders[i].addEventListener("mousemove", changeParameter);
+	for (var s = 0; s < sliders.length; s++) {
+		sliders[s].addEventListener("mousemove", changeParameter);
 	}
 
 	//Funktion zur änderung der Parameter Werte der Slider
@@ -58,7 +57,7 @@ window.onload=function(){
 
 	//Actionlistener für die Button
 	stButton.addEventListener("mousedown", function(e){
-		console.log("start");
+		tCounter = 0;
 		timer = setInterval(() => {
 			tCounter += 1;
 			console.log(tCounter);
@@ -71,6 +70,7 @@ window.onload=function(){
 
 	spButton.addEventListener("mousedown",function(e){
 		clearInterval(timer);
+		tCounter = 10;
 	});
 
 	lpBtn.addEventListener("mousedown",function(e){
@@ -89,7 +89,7 @@ for(var x = 0; x < coord.length; x++){
 }
 	
 //Timer mit Counter für den abgleich mit der X-Koordinate
-var tCounter = 0;
+var tCounter = 10;
 
 if (navigator.requestMIDIAccess) {
 	console.log("This browser supports MIDI");
@@ -152,7 +152,6 @@ if (navigator.requestMIDIAccess) {
 
 	//Zuweisung Farbe und Instrument
 function playInstrument(i){
-
 		sounds[i].play(); 
 }
 }else {
