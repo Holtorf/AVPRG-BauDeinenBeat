@@ -4,12 +4,17 @@ var context = new AudioContext(),
 	bSound = new Audio("../Sounds/housePiano.wav"),
 	ySound = new Audio("../Sounds/saxophone.wav"),
 	sounds = [rSound,ySound,gSound,bSound];
+	source = context.createMediaElementSource(sounds[i]);
+	filter = context.createBiquadFilter();
+
+	source.connect(filter);
+	filter.connect(context.destination);
 
 var timer = null;
 
 window.onload=function(){
-	var   sliders = document.getElementsByClassName("slider"),
-    
+	var sliders = document.getElementsByClassName("slider"),
+
 	lpBtn = document.getElementById("lpButton"),
     hpBtn = document.getElementById("hpButton"),
     bpBtn = document.getElementById("bpButton"),
@@ -21,13 +26,7 @@ window.onload=function(){
 
     stButton = document.getElementById("startBtn"),
 	svButton = document.getElementById("saveBtn"),
-    spButton = document.getElementById("stopBtn"),
-
-	source = context.createMediaElementSource(rSound);
-	filter = context.createBiquadFilter();
-
-	source.connect(filter);
-	filter.connect(context.destination);
+    spButton = document.getElementById("stopBtn");
 
 	for (var s = 0; s < sliders.length; s++) {
 		sliders[s].addEventListener("mousemove", changeParameter);
@@ -61,7 +60,7 @@ window.onload=function(){
 		timer = setInterval(() => {
 			tCounter += 1;
 			console.log(tCounter);
-				if (tCounter === 8){
+				if (tCounter === 9){
 					tCounter = 0;
 					console.log(tCounter);
 					}
@@ -75,7 +74,7 @@ window.onload=function(){
 
 	lpBtn.addEventListener("mousedown",function(e){
 		filter.type = filter.LOWPASS;
-		filter.frequency.value = 5000;
+		console.log(filter.type);
 	});
 
 }
