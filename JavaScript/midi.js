@@ -4,11 +4,13 @@ var context = new AudioContext(),
 	bSound = new Audio("../Sounds/housePiano.wav"),
 	ySound = new Audio("../Sounds/saxophone.wav"),
 	sounds = [rSound,ySound,gSound,bSound];
+	
+for(var i=0; i <= sounds.length; i++){
 	source = context.createMediaElementSource(sounds[i]);
 	filter = context.createBiquadFilter();
-
 	source.connect(filter);
 	filter.connect(context.destination);
+	}
 
 var timer = null;
 
@@ -72,11 +74,45 @@ window.onload=function(){
 		tCounter = 10;
 	});
 
-	lpBtn.addEventListener("mousedown",function(e){
-		filter.type = filter.LOWPASS;
+	lpBtn.addEventListener("click",function(e){
+		filter.type = "lowpass";
 		console.log(filter.type);
 	});
 
+	hpBtn.addEventListener("click",function(e){
+		filter.type = "highpass";
+		console.log(filter.type);
+	});
+
+	bpBtn.addEventListener("click",function(e){
+		filter.type = "bandpass";
+		console.log(filter.type);
+	});
+
+	apBtn.addEventListener("click",function(e){
+		filter.type = "allpass";
+		console.log(filter.type);
+	});
+
+	lsBtn.addEventListener("click",function(e){
+		filter.type = "lowshelf";
+		console.log(filter.type);
+	});
+
+	hsBtn.addEventListener("click",function(e){
+		filter.type = "highshelf";
+		console.log(filter.type);
+	});
+
+	pBtn.addEventListener("click",function(e){
+		filter.type = "peaking";
+		console.log(filter.type);
+	});
+
+	nBtn.addEventListener("click",function(e){
+		filter.type = "notch";
+		console.log(filter.type);
+	});
 }
 
 var cArray = new Array(5);
