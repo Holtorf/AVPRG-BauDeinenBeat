@@ -1,8 +1,8 @@
 var context = new AudioContext(),
-	rSound = new Audio("../Sounds/drums2.wav"),
-	gSound = new Audio("../Sounds/vocals.wav"),
-	bSound = new Audio("../Sounds/snare.wav"),
-	ySound = new Audio("../Sounds/drums1.wav"),
+	rSound = new Audio("../Sounds/snare.wav"),
+	gSound = new Audio("../Sounds/vocal.wav"),
+	bSound = new Audio("../Sounds/guitar.wav"),
+	ySound = new Audio("../Sounds/drum.wav"),
 	sounds = [rSound,ySound,gSound,bSound];
 	source = new Array (sounds.length);
 	filter = context.createBiquadFilter();
@@ -66,9 +66,9 @@ window.onload=function(){
 					}
 		}, 1000);
 
-		for(var i=0; i <= sounds.length; i++){
-		source[i] = context.createMediaElementSource(sounds[i]);
-		source[i].connect(filter);
+		for(var m=0; m <= sounds.length; m++){
+		source[m] = context.createMediaElementSource(sounds[m]);
+		source[m].connect(filter);
 		filter.connect(context.destination);
 	}
 	});
@@ -187,6 +187,7 @@ if (navigator.requestMIDIAccess) {
 
 	//Zuweisung Farbe und Instrument
 function playInstrument(i){
+		sounds[i].currentTime = 0;
 		sounds[i].play(); 
 }
 }else {
