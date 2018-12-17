@@ -12,12 +12,6 @@ var cArray = new Array(5);
 var coord = new Array(8);
 var tCounter = 10;
 
-for(var i=0; i <= sounds.length; i++){
-	source[i] = context.createMediaElementSource(sounds[i]);
-	source[i].connect(filter);
-	filter.connect(context.destination);
-	}
-
 window.onload=function(){
 	var sliders = document.getElementsByClassName("slider"),
 
@@ -71,6 +65,12 @@ window.onload=function(){
 					console.log(tCounter);
 					}
 		}, 1000);
+
+		for(var i=0; i <= sounds.length; i++){
+		source[i] = context.createMediaElementSource(sounds[i]);
+		source[i].connect(filter);
+		filter.connect(context.destination);
+	}
 	});
 
 	spButton.addEventListener("mousedown",function(e){
