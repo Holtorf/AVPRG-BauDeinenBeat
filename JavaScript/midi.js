@@ -4,15 +4,19 @@ var context = new AudioContext(),
 	bSound = new Audio("../Sounds/snare.wav"),
 	ySound = new Audio("../Sounds/drums1.wav"),
 	sounds = [rSound,ySound,gSound,bSound];
-	
-for(var i=0; i <= sounds.length; i++){
-	source = context.createMediaElementSource(sounds[i]);
+	source = new Array (sounds.length);
 	filter = context.createBiquadFilter();
-	source.connect(filter);
+	
+var timer = null;
+var cArray = new Array(5);
+var coord = new Array(8);
+var tCounter = 10;
+
+for(var i=0; i <= sounds.length; i++){
+	source[i] = context.createMediaElementSource(sounds[i]);
+	source[i].connect(filter);
 	filter.connect(context.destination);
 	}
-
-var timer = null;
 
 window.onload=function(){
 	var sliders = document.getElementsByClassName("slider"),
@@ -34,7 +38,7 @@ window.onload=function(){
 		sliders[s].addEventListener("mousemove", changeParameter);
 	}
 
-	//Funktion zur ï¿½nderung der Parameter Werte der Slider
+	//Funktion zur änderung der Parameter Werte der Slider
 	function changeParameter() {
 		switch(this.id) {
 			case "frequencySlider":
@@ -56,7 +60,7 @@ window.onload=function(){
 		}
 	}
 
-	//Actionlistener fï¿½r die Button
+	//Actionlistener für die Button
 	stButton.addEventListener("mousedown", function(e){
 		tCounter = 0;
 		timer = setInterval(() => {
@@ -115,16 +119,12 @@ window.onload=function(){
 	});
 }
 
-var cArray = new Array(5);
-
 //Erstelllung des 2-Dimensionalem Coordinaten Arrays
-var coord = new Array(8);
 for(var x = 0; x < coord.length; x++){
 	coord[x] = new Array(7);
 }
 	
-//Timer mit Counter fï¿½r den abgleich mit der X-Koordinate
-var tCounter = 10;
+//Timer mit Counter für den abgleich mit der X-Koordinate
 
 if (navigator.requestMIDIAccess) {
 	console.log("This browser supports MIDI");
@@ -147,7 +147,7 @@ if (navigator.requestMIDIAccess) {
 		console.log('Could not acess your MIDI devices.');
 	}
 
-	//Funktion zur verarbeitung der ï¿½bertragenen Daten
+	//Funktion zur verarbeitung der Übertragenen Daten
 	function getMIDIMessage(midiMessage) {
 		//console.log(midiMessage);
 
@@ -162,7 +162,7 @@ if (navigator.requestMIDIAccess) {
 		coord [xCoord] [yCoord] = color - 1;
 		//console.log(coord);
 
-		//Variablen fï¿½r  die for Schleifen
+		//Variablen für  die for Schleifen
 		var c = 0;
 		var y = 0;
 		var x = 0;
