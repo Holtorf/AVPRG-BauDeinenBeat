@@ -14,6 +14,7 @@ using namespace cv;
 
 class StartCamera{
 
+private:int testCounter;
     private:double startTime;
     private:Mat bgrFrame;
     private:Mat hsvFrame;

@@ -1,8 +1,8 @@
 var context = new AudioContext(),
-	rSound = new Audio("../Sounds/banjo.wav"),
-	gSound = new Audio("../Sounds/drum.wav"),
-	bSound = new Audio("../Sounds/housePiano.wav"),
-	ySound = new Audio("../Sounds/saxophone.wav"),
+	rSound = new Audio("../Sounds/drums2.wav"),
+	gSound = new Audio("../Sounds/vocals.wav"),
+	bSound = new Audio("../Sounds/snare.wav"),
+	ySound = new Audio("../Sounds/drums1.wav"),
 	sounds = [rSound,ySound,gSound,bSound];
 	
 for(var i=0; i <= sounds.length; i++){
@@ -34,7 +34,7 @@ window.onload=function(){
 		sliders[s].addEventListener("mousemove", changeParameter);
 	}
 
-	//Funktion zur änderung der Parameter Werte der Slider
+	//Funktion zur ï¿½nderung der Parameter Werte der Slider
 	function changeParameter() {
 		switch(this.id) {
 			case "frequencySlider":
@@ -56,7 +56,7 @@ window.onload=function(){
 		}
 	}
 
-	//Actionlistener für die Button
+	//Actionlistener fï¿½r die Button
 	stButton.addEventListener("mousedown", function(e){
 		tCounter = 0;
 		timer = setInterval(() => {
@@ -123,7 +123,7 @@ for(var x = 0; x < coord.length; x++){
 	coord[x] = new Array(7);
 }
 	
-//Timer mit Counter für den abgleich mit der X-Koordinate
+//Timer mit Counter fï¿½r den abgleich mit der X-Koordinate
 var tCounter = 10;
 
 if (navigator.requestMIDIAccess) {
@@ -147,7 +147,7 @@ if (navigator.requestMIDIAccess) {
 		console.log('Could not acess your MIDI devices.');
 	}
 
-	//Funktion zur verarbeitung der Übertragenen Daten
+	//Funktion zur verarbeitung der ï¿½bertragenen Daten
 	function getMIDIMessage(midiMessage) {
 		//console.log(midiMessage);
 
@@ -162,7 +162,7 @@ if (navigator.requestMIDIAccess) {
 		coord [xCoord] [yCoord] = color - 1;
 		//console.log(coord);
 
-		//Variablen für  die for Schleifen
+		//Variablen fï¿½r  die for Schleifen
 		var c = 0;
 		var y = 0;
 		var x = 0;

@@ -26,6 +26,9 @@ int StartCamera::start(){
         return -1;
     }
     bool b = true;
+    int hue;
+
+    testCounter = 0;
 
 //Während Kamera läuft, wird ein Raster erstellt und für jedes der Rasterfelder eine Farbe gespeichert, sofern vorhanden
     while(b){
@@ -53,7 +56,8 @@ int StartCamera::start(){
         double test1 = ((clock()-startTime)/double (CLOCKS_PER_SEC));
         if (test1>=1){
 
-            qDebug()<<"Schleife "<<test1;
+            //qDebug()<<"Schleife "<<test1;
+            qDebug()<<"SCHLEIFE "<<testCounter;
 // Rasterfelder werden erstellt
             for(int rasterY=0; rasterY<rasterRows; rasterY++){
 
@@ -73,21 +77,21 @@ int StartCamera::start(){
 
                            Vec3b hsvPixel = hsvFrame.at<Vec3b>(fieldY+(fieldRows*rasterY),fieldX+(fieldCols*rasterX));
     // H-Wert wird auf Farbbereich gecheckt
-                           int hue = hsvPixel[0];
+                           hue = hsvPixel[0];
 
     // Wenn S- oder V-Werte zu niedrig, wird Farbwert nicht gespeichert
                            sat = hsvPixel[1];
                            val = hsvPixel[2];
 
     // Counter für jede Farbe erhöhen sich pro Pixel
-                           if(sat>20 && val>20){
-                               if(hue<=15 || hue>=355){         //Pixel rot
+                           if(sat>40 && val>50){
+                               if(hue<=15 || hue>=355){         //Pixel rot 15 - 355
                                    redCounter += 1;
                                }
                                else if (hue<=30 && hue>=20) {   //Pixel gelb
                                    yellowCounter += 1;
                                }
-                               else if (hue<=90 && hue>=60){    //Pixel gruen
+                               else if (hue<=99 && hue>=60){    //Pixel gruen
                                    greenCounter += 1;
                                }
                                else if (hue<=110 && hue>=100){  //Pixel blau
@@ -107,23 +111,23 @@ int StartCamera::start(){
 
     // Für ein Rasterfeld wird die dominierende Farbe gespeichert,
                     if(yellowCounter<=redCounter && greenCounter<=redCounter && blueCounter<=redCounter && othersCounter<=redCounter){                   //Rasterfeld rot
-                       //qDebug()<<rasterX<<" "<<rasterY<<" Rot";
+                       qDebug()<<"X: "<<rasterX<<" Y: "<<rasterY<<" S: "<<sat<<" V: "<<val<<" H: "<<hue<<" Rot ";
                        colorCode = 1;
                    }
                    else if (redCounter<=yellowCounter && greenCounter<=yellowCounter && blueCounter<=yellowCounter && othersCounter<=yellowCounter) {   //Rasterfeld gelb
-                       //qDebug()<<rasterX<<" "<<rasterY<<"Gelb";
+                       qDebug()<<"X: "<<rasterX<<" Y: "<<rasterY<<" S: "<<sat<<" V: "<<val<<" H: "<<hue<<" Gelb ";
                        colorCode = 2;
                    }
                    else if (yellowCounter<=greenCounter && redCounter<=greenCounter && blueCounter<=greenCounter && othersCounter<=greenCounter){       //Rasterfeld gruen
-                       //qDebug()<<rasterX<<" "<<rasterY<<"Gruen";
+                        qDebug()<<"X: "<<rasterX<<" Y: "<<rasterY<<" S: "<<sat<<" V: "<<val<<" H: "<<hue<<" Gruen ";
                        colorCode = 3;
                    }
                    else if (yellowCounter<=blueCounter && greenCounter<=blueCounter && redCounter<=blueCounter && othersCounter<=blueCounter){          //Rasterfeld blau
-                       //qDebug()<<rasterX<<" "<<rasterY<<"Blau";
+                       qDebug()<<"X: "<<rasterX<<" Y: "<<rasterY<<" S: "<<sat<<" V: "<<val<<" H: "<<hue<<" Blau ";
                        colorCode = 4;
                    }
                    else{                                                                                                                                //Rasterfeld sonstige
-                       //qDebug()<<rasterX<<" "<<rasterY<<"Sonstiges";
+                       qDebug()<<"X: "<<rasterX<<" Y: "<<rasterY<<" S: "<<sat<<" V: "<<val<<" H: "<<hue<<" Sonstiges ";
                        colorCode = 0;
                    }
 
@@ -137,7 +141,7 @@ int StartCamera::start(){
                        data[3] = rasterY;   //y-coordinates
                    data[4] = 0xf7;             //end byte
 
-                   midiOutput.sendSysex(data);
+                    midiOutput.sendSysex(data);
 
                 }
             }
